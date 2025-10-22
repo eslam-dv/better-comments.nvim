@@ -18,7 +18,7 @@ in order to use this plugin you need to set up treesiter
 
 ```lua
 {
-    "Djancyp/better-comments.nvim",
+    "eslam-dv/better-comments.nvim",
     event = { "BufReadPre", "BufNewFile" }, -- Load before a file is read
     opts = {} -- default config
 }
