@@ -1,88 +1,97 @@
 # Better Comments - NVIM
-Better comments helps you to organize your comments with highlights and virtual text.
+
+Better comments helps you to organize your comments with highlights and virtual text, offering behavior similar to the VS Code Better Comments extension.
 
 # DEMO
-![Demo](https://github.com/Djancyp/nvim-plugin-demo/blob/main/better-comment.nvim/images/example.png)
+
+![Demo](./imgs/demo.png)
+
 ## Installation
+
 ### Requirement
+
 in order to use this plugin you need to set up treesiter
 
 [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
-Recommended Packer:
+### Setup (using lazy.nvim)
 
 ```lua
-use "Djancyp/better-comments.nvim"
-```
-### Setup
-```lua
-require('better-comment').Setup()
+{
+    "Djancyp/better-comments.nvim",
+    event = { "BufReadPre", "BufNewFile" }, -- Load before a file is read
+    opts = {} -- default config
+}
 ```
 
 ## Configs
-### Default Config
-```lua
-tags = {
-        {
-            name = "TODO",
-            fg = "white",
-            bg = "#0a7aca",
-            bold = true,
-            virtual_text = "",
-        },
-        {
-            name = "FIX",
-            fg = "white",
-            bg = "#f44747",
-            bold = true,
-            virtual_text = "This is virtual Text from FIX",
-        },
-        {
-            name = "WARNING",
-            fg = "#FFA500",
-            bg = "",
-            bold = false,
-            virtual_text = "This is virtual Text from WARNING",
-        },
-        {
-            name = "!",
-            fg = "#f44747",
-            bg = "",
-            bold = true,
-            virtual_text = "",
-        }
 
-    }
-```
-### Overwrite defaults or add new Config
+### Default Config
+
 ```lua
-require('better-comment').Setup({
 tags = {
-       // TODO will overwrite
+    {
+        name = "!",
+        fg = "#ff2d00",
+        bg = "",
+        bold = true,
+    },
+    {
+        name = "?",
+        fg = "#1f98ff",
+        bg = "",
+        bold = true,
+    },
+    {
+        name = "todo",
+        fg = "#ff8c00",
+        bg = "",
+        bold = true,
+    },
+    {
+        name = "TODO",
+        fg = "#ff8c00",
+        bg = "",
+        bold = true,
+    },
+    {
+        name = "*",
+        fg = "#98C379",
+        bg = "",
+        bold = true,
+    },
+},
+```
+
+### Overwrite defaults or add new Config
+
+```lua
+require('better-comments').setup({
+    tags = {
+        -- Overwrites the default 'TODO' to be bold with a blue background
         {
             name = "TODO",
             fg = "white",
             bg = "#0a7aca",
             bold = true,
-            virtual_text = "",
         },
-       {
+        -- Adds a new tag 'NEW'
+        {
             name = "NEW",
             fg = "white",
             bg = "red",
             bold = false,
-            virtual_text = "",
         },
-
     }
 })
 ```
 
-
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)
